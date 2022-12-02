@@ -6,9 +6,14 @@
 # url: https://github.com/MilesMY/discourse-plugin-ask-crimson-canonical-tag
 
 after_initialize do
-  module CanonicalURL::Helpers
-    def canonical_link_tag(url = nil)
-      tag('link', rel: 'canonical', href: default_canonical)
+  module CanonicalURL::ControllerExtensions
+    def default_canonical
+      @default_canonical ||= "https://www.crimsoneducation.org/nz/resources/ask-crimson#{request.path}"
     end
   end
+  # module CanonicalURL::Helpers
+  #   def canonical_link_tag(url = nil)
+  #     tag('link', rel: 'canonical', href: default_canonical)
+  #   end
+  # end
 end
