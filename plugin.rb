@@ -8,7 +8,7 @@
 after_initialize do
   module CanonicalURL::Helpers
     def canonical_link_tag(url = nil)
-      tag('link', rel: 'canonical', href: url || @canonical_url)
+      tag('link', rel: 'canonical', href: default_canonical)
     end
   end
 end
