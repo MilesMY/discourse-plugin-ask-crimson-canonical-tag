@@ -8,12 +8,12 @@
 after_initialize do
   module CanonicalURL::ControllerExtensions
     def default_canonical
-      @default_canonical ||= "https://www.crimsoneducation.org/nz/resources/ask-crimson#{request.path}"
+      @default_canonical ||= "https://www.staging.crimsoneducation.org/nz/resources/ask-crimson#{request.path}"
     end
   end
-  # module CanonicalURL::Helpers
-  #   def canonical_link_tag(url = nil)
-  #     tag('link', rel: 'canonical', href: default_canonical)
-  #   end
-  # end
+  module CanonicalURL::Helpers
+    def canonical_link_tag(url = nil)
+      tag('link', rel: 'canonical', href: "https://www.crimsoneducation.org/nz/resources/ask-crimson#{request.path}")
+    end
+  end
 end
